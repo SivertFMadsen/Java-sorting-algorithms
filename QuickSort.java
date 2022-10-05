@@ -1,13 +1,21 @@
 /**
+ * Sorts an array in (at worst) O(n^2) time by
+ * picking a pivot, and putting everything bigger
+ * than the pivot to the right of the pivot, and
+ * everything smaller than the pivot to the left -
+ * and then continuing this process recursively.
+ * In this case the pivot chosen is the middle
+ * index for each iteration.
  */
 public class QuickSort {
 
-    static int changes;
+    static int swaps = 0;
 
     public static int[] sort(int[] array) {
 
         sort_r(array, 0, array.length - 1);
 
+        System.out.println("Number of swaps: " + swaps);
         return array;
     }
 
@@ -31,26 +39,29 @@ public class QuickSort {
         int pivot = part[pivotIndex];
         part[pivotIndex] = part[high];
         part[high] = pivot;
+        swaps++;
         
         int left = low;
         int right = high - 1;
 
         while (left <= right) {
             while (left <= right && part[left] <= pivot) {
-                left ++;
+                left++;
             }
             while (right >= left && part[right] >= pivot) {
-                right --;
+                right--;
             }
             if (left < right) {
                 temp = part[left];
                 part[left] = part[right];
                 part[right] = temp;
+                swaps++;
             }
         }
         temp = part[left];
         part[left] = part[high];
         part[high] = temp;
+        swaps++;
 
         return left;
     }
