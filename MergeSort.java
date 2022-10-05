@@ -7,6 +7,8 @@ import java.util.Arrays;
  */
 
 public class MergeSort {
+
+    static int swaps = 0;
     
     public static int[] sort(int[] array) {
 
