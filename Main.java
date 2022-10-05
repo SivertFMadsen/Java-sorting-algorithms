@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         
         int[] unSorted = generateArray(100, 1000);
-        int[] sorted = InsertionSort.sort(Arrays.copyOf(unSorted, unSorted.length));
+        int[] sorted = SelectionSort.sort(Arrays.copyOf(unSorted, unSorted.length));
 
         // QuickSort.sort(Arrays.copyOf(unSorted, unSorted.length));
 
