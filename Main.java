@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
         
         int[] unSorted = generateArray(100, 1000);
-        int[] sorted = SelectionSort.sort(Arrays.copyOf(unSorted, unSorted.length));
+        MergeSort mergeSort = new MergeSort(); 
+        int[] sorted = mergeSort.sortHere(Arrays.copyOf(unSorted, unSorted.length));
 
         // QuickSort.sort(Arrays.copyOf(unSorted, unSorted.length));
 

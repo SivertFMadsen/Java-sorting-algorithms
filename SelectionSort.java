@@ -1,20 +1,33 @@
-public class SelectionSort {
-    
-    public static int[] sort(int[] array) {
+public class SelectionSort extends Sorter {
 
-        for (int i = 0; i < array.length; i++) {
+    @Override
+    String algorithmName() {
+        return "Merge";
+    }
+
+    @Override
+    void sort() {
+
+        sortHere(A);
+    }
+    
+    public int[] sortHere(int[] array) {
+
+        for (int i = 0; lt(i, array.length); i++) {
             int smallest = array[i];
             int smallestIndex = i;
 
-            for (int j = i; j < array.length; j++) {
+            for (int j = i; lt(j, array.length); j++) {
 
                 if (array[j] < smallest) {
                     smallest = array[j];
                     smallestIndex = j;
                 }
             }
-            array[smallestIndex] = array[i];
-            array[i] = smallest;
+
+            swap(array[smallestIndex], array[i]);
+            // array[smallestIndex] = array[i];
+            // array[i] = smallest;
         }
         return array;
     }
