@@ -25,7 +25,7 @@ public class SelectionSort extends Sorter {
                 }
             }
 
-            swap(array[smallestIndex], array[i]);
+            swap(smallestIndex, i);
             // array[smallestIndex] = array[i];
             // array[i] = smallest;
         }
