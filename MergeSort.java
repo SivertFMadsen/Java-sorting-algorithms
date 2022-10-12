@@ -6,21 +6,25 @@ import java.util.Arrays;
  * sorted way. 
  */
 
-public class MergeSort {
+public class MergeSort extends Sorter {
 
     static int swaps = 0;
+
+    void sort() {
+
+        sort_here(A);
+
+    }
     
-    public static int[] sort(int[] array) {
+    public static int[] sort_here(int[] array) {
 
-        // System.out.println(Arrays.toString(array));
-
-        if (array.length <= 1) {
+        if (leq(array.length, 1)) {
             return array;
         }
 
         int i = (array.length)/2;
-        int[] part1 = sort(Arrays.copyOfRange(array, 0, i));
-        int[] part2 = sort(Arrays.copyOfRange(array, i, array.length));
+        int[] part1 = sort_here(Arrays.copyOfRange(array, 0, i));
+        int[] part2 = sort_here(Arrays.copyOfRange(array, i, array.length));
         return merge(part1, part2, array);
     }
 
@@ -29,8 +33,8 @@ public class MergeSort {
         int i = 0;
         int j = 0;
 
-        while (i < part1.length && j < part2.length) {
-            if (part1[i] <= part2[j]) {
+        while (lt(i, part1.length) && lt(j, part2.length)) {
+            if (leq(part1[i], part2[j])) {
                 array[i + j] = part1[i];
                 i++;
             } else {
@@ -38,11 +42,11 @@ public class MergeSort {
                 j++;
             }
         }
-        while (i < part1.length) {
+        while (leq(i, part1.length)) {
             array[i + j] = part1[i];
             i++;
         }
-        while (j < part2.length) {
+        while (leq(j, part2.length)) {
             array[i + j] = part2[j];
             j++;
         }
